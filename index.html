@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="js/script.js"></script>
+    <script src="https://get.mavo.io/stable/mavo.js"></script>
+    <link rel="stylesheet" href="https://get.mavo.io/stable/mavo.css">
+    <title>document</title>
+</head>
+
+<body>
+    </div>
+    <div class="week">
+        <table>
+            <tr>
+                <th><input type="button" class="btn" value="+" id="addDayTask">
+                    <input type="hidden" id="inputDayTask" /> sun
+                </th>
+                <th>mon</th>
+                <th>tue</th>
+                <th>wed</th>
+                <th>thu</th>
+                <th>fri</th>
+                <th>sat</th>
+            </tr>
+            <tr>
+                <td style="word-wrap: break-word">
+                    <div class="dayTask" id="taskID">
+
+                        <script type="text/javascript">
+                            document.getElementById("addDayTask").onclick = function () {
+                                var inputBox = document.getElementById("inputDayTask");
+
+                                if (inputBox.type === "hidden") {
+                                    inputBox.type = "text";
+                                }
+                                else if (inputBox.type === "text") {
+                                    var checkBox = document.createElement('input');
+                                    checkBox.setAttribute('type', 'checkbox');
+                                    checkBox.setAttribute('id', 'checkBox');
+
+                                    var task = document.createElement('label');
+                                    task.setAttribute('for', 'checkBox');
+                                    task.appendChild(document.createTextNode(inputDayTask.value));
+
+
+                                    var boxAndLabel = document.createElement('div');
+                                    boxAndLabel.setAttribute('class', 'boxLabel');
+                                    boxAndLabel.appendChild(checkBox);
+                                    boxAndLabel.appendChild(task);
+                                    document.getElementById("taskID").appendChild(boxAndLabel);
+
+                                    document.getElementById("inputDayTask").value = "";
+                                    inputBox.type = "hidden";
+                                }
+                            }
+                        </script>
+                    </div>
+
+                </td>
+                <td style="word-wrap: break-word">
+                    <div class="dayTask" contentEditable="true"></div>
+                </td>
+                <td style="word-wrap: break-word">
+                    <div class="dayTask" contentEditable="true"></div>
+                </td>
+                <td style="word-wrap: break-word">
+                    <div class="dayTask" contentEditable="true"></div>
+                </td>
+                <td style="word-wrap: break-word">
+                    <div class="dayTask" contentEditable="true"></div>
+                </td>
+                <td style="word-wrap: break-word">
+                    <div class="dayTask" contentEditable="true"></div>
+                </td>
+                <td style="word-wrap: break-word">
+                    <div class="dayTask" contentEditable="true"></div>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+
+    <div class="week">
+        <table>
+            <tr>
+                <th>sun</th>
+                <th>mon</th>
+                <th>tue</th>
+                <th>wed</th>
+                <th>thu</th>
+                <th>fri</th>
+                <th>sat</th>
+            </tr>
+            <tr>
+                <td style="word-wrap: break-word">
+                    <div class="dayTask" contentEditable="true"></div>
+                </td>
+                <td style="word-wrap: break-word">
+                    <div class="dayTask" contentEditable="true"></div>
+                </td>
+                <td style="word-wrap: break-word">
+                    <div class="dayTask" contentEditable="true"></div>
+                </td>
+                <td style="word-wrap: break-word">
+                    <div class="dayTask" contentEditable="true"></div>
+                </td>
+                <td style="word-wrap: break-word">
+                    <div class="dayTask" contentEditable="true"></div>
+                </td>
+                <td style="word-wrap: break-word">
+                    <div class="dayTask" contentEditable="true"></div>
+                </td>
+                <td style="word-wrap: break-word">
+                    <div class="dayTask" contentEditable="true"></div>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+
+
+    <div id="date" class="day">
+
+    </div>
+    <div class="float-container">
+        <div class="float-child">
+            <input type="button" class="btn" value="+" id="addTask">
+            <input type="hidden" id="inputTask" />
+
+
+            <div class="dayTask" id="taskID">
+
+                <script type="text/javascript">
+                    document.getElementById("addTask").onclick = function () {
+
+                        console.log("addtask was clicked");
+                        var inputBox = document.getElementById("inputTask");
+
+                        if (inputBox.type === "hidden") {
+                            inputBox.type = "text";
+                        }
+                        else if (inputBox.type === "text") {
+                            var checkBoxToday = document.createElement('input');
+                            checkBoxToday.setAttribute('type', 'checkbox');
+                            checkBoxToday.setAttribute('id', 'checkBoxToday');
+
+                            var task = document.createElement('label');
+                            task.setAttribute('for', 'checkBoxToday');
+                            task.appendChild(document.createTextNode(inputTask.value));
+
+
+                            var todayBox = document.createElement('div');
+                            todayBox.setAttribute('class', 'boxLabel');
+                            todayBox.appendChild(checkBoxToday);
+                            todayBox.appendChild(task);
+                            document.getElementById("todaysTasks").appendChild(todayBox);
+
+                            document.getElementById("inputTask").value = "";
+                            inputBox.type = "hidden";
+                        }
+                    }
+                </script>
+            </div>
+
+
+            <h1>today's tasks:</h1>
+            <p>
+            <ul id="todaysTasks">
+                <il></il>
+                <il></il>
+                <il></il>
+                <il></il>
+                <il></il>
+            </ul>
+            </p>
+
+
+        </div>
+
+        <div class="float-child">
+
+            <input type="button" class="btn" value="clear" id="clearSchedule">
+
+            <script type="text/javascript">
+                document.getElementById("clearSchedule").onclick = function () {
+                    console.log("clearSchedule was clicked");
+                    const events = document.getElementsByClassName("event");
+                    for (let i = 0; i < events.length; i++) {
+                        events[i].innerHTML = "";
+                    }
+
+                }
+            </script>
+
+
+            <h1> today's schedule:</h1>
+            <p class="todo">
+            <ul class="schedule">
+                <ol class="timeSlot">7 <div class="event" contentEditable="true">-</div>
+                </ol>
+                <ol class="timeSlot">8 <div class="event" contentEditable="true">-</div>
+                </ol>
+                <ol class="timeSlot">9 <div class="event" contentEditable="true">-</div>
+                </ol>
+                <ol class="timeSlot">10 <div class="event" contentEditable="true">-</div>
+                </ol>
+                <ol class="timeSlot">11 <div class="event" contentEditable="true">-</div>
+                </ol>
+                <ol class="timeSlot">12 <div class="event" contentEditable="true">lady black tie</div>
+                </ol>
+                <ol class="timeSlot">1 <div class="event" contentEditable="true">wild hare</div>
+                </ol>
+                <ol class="timeSlot">2 <div class="event" contentEditable="true">pick up alessa</div>
+                </ol>
+                <ol class="timeSlot">3 <div class="event" contentEditable="true">cafe</div>
+                </ol>
+                <ol class="timeSlot">4 <div class="event" contentEditable="true">cafe</div>
+                </ol>
+                <ol class="timeSlot">5 <div class="event" contentEditable="true" ">dinner?</div>
+            </ol>
+            <ol class=" timeSlot">6 <div class="event" contentEditable="true">dinner?</div>
+                </ol>
+                <ol class="timeSlot">7 <div class="event" contentEditable="true">gym</div>
+                </ol>
+                <ol class="timeSlot">8 <div class="event" contentEditable="true">gym</div>
+                </ol>
+                <ol class="timeSlot">9 <div class="event" contentEditable="true"></div>
+                </ol>
+                <ol class="timeSlot">10 <div class="event" contentEditable="true"></div>
+                </ol>
+                <ol class="timeSlot">11 <div class="event" contentEditable="true"></div>
+                </ol>
+            </ul>
+            </p>
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>
